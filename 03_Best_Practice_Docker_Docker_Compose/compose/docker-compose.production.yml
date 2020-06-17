@@ -1,0 +1,20 @@
+version: "2.3"
+services:
+    nginx:
+        image: $CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:${CI_COMMIT_REF_SLUG}_nginx.$CI_PIPELINE_ID
+        ports:
+            - "80:80"
+        depends_on:
+            php:
+                condition: service_healthy
+        environment:
+            - ENV=production
+    php:
+        image: $CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:${CI_COMMIT_REF_SLUG}_php.$CI_PIPELINE_ID
+        healthcheck:
+            test: ["CMD", "php-fpm", "-t"]
+            interval: 3s
+            timeout: 5s
+            retries: 5
+            start_period: 1s
+            

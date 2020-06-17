@@ -1,0 +1,52 @@
+stages:
+    - build
+    - push
+    - test
+    - cleanup
+    - deploy
+
+build:
+    stage: build
+    script:
+        - docker build -t $CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:${CI_COMMIT_REF_SLUG}_nginx.$CI_PIPELINE_ID ./nginx/
+        - docker build -t $CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:${CI_COMMIT_REF_SLUG}_php.$CI_PIPELINE_ID ./php/
+
+push:
+    stage: push
+    before_script:
+        - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+    script:
+        - docker push $CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:${CI_COMMIT_REF_SLUG}_nginx.$CI_PIPELINE_ID
+        - docker push $CI_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME:${CI_COMMIT_REF_SLUG}_php.$CI_PIPELINE_ID
+
+test:
+    stage: test
+    image:
+        name: docker/compose:1.23.2
+        entrypoint: [""]
+    variables:
+        DOCKER_HOST: tcp://10.64.252.157:2376
+    script:
+        - docker login gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+        - docker-compose -f docker-compose.production.yml -f docker-compose.test.yml up --abort-on-container-exit --exit-code-from test
+
+cleanup:
+    stage: cleanup
+    image:
+        name: docker/compose:1.23.2
+        entrypoint: [""]
+    variables:
+        DOCKER_HOST: tcp://10.64.252.157:2376 
+    script:
+        - docker-compose down
+    when: always
+    
+deploy:
+    stage: deploy
+    image:
+        name: docker/compose:1.23.2
+        entrypoint: [""]
+    variables:
+        DOCKER_HOST: tcp://10.64.252.157:2376
+    script:
+        - docker-compose -f docker-compose.production.yml up -d
