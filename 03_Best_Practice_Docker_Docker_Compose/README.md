@@ -1,14 +1,14 @@
 # Урок 3 Слёрм
 
-* Best Practice
+* Best Practice Docker и Docker-compose
 
-1.	Что мы хотим от программы
-  a.	Скорость (сборка, и быстрый релиз)
-  b.	Безопасность и контроль
-  c.	Удобство работы и прозрачность
+##	Что мы хотим от программы
+1.	Скорость (сборка, и быстрый релиз)
+2.	Безопасность и контроль
+3.	Удобство работы и прозрачность
 
 
-* Ускоряемся 
+## Ускоряемся 
 
 -	Тюнинг Dockerfile
 -	.dockerignore
@@ -22,7 +22,7 @@ docker build –t test_size .
 ```
 
 
-* Усиливаем контроль и безопасность
+## Усиливаем контроль и безопасность
 
 - Не используем latest!
 - Указываем  явные версии ПО
@@ -38,7 +38,7 @@ docker build –t test_size .
 docker-compose -f docker-compose.production.yml -f docker-compose.test.yml up --abort-on-container-exit --exit-code-from test
 ```
 
-# Ссылки
+## Ссылки
 
 * https://clck.ru/MBtKt - про CI/CD в целом
 
