@@ -1,5 +1,10 @@
 ## Введение в Kubernetes, Pod, Replicaset. Вечерняя школа Слёрм по Кубернетес
 
+![Image](img/Kube.png)
+
+![Image](img/Kube2.png)
+
+Link: [YouTube Video](https://www.youtube.com/watch?v=5niyUEvgwyA)
 ```
 kubectl create -f pod.yaml
 ```
