@@ -1,0 +1,30 @@
+ADMIN_HOST=v4-admin.e-credit.one
+ADMIN_IMAGE=labregistry.e-credit.one/e-credit/v4-e-credit-api-platform/admin:master_admin.latest
+API_HOST=v4-api.e-credit.one
+APP_SECRET=5dSlTsUx29MryBZj6jzltaNW
+FRONTEND_HOST=v4.e-credit.one,www.v4.e-credit.one
+FRONTEND_IMAGE=labregistry.e-credit.one/e-credit/v4-e-credit-api-platform/frontend:master_frontend.latest
+CORS_ALLOW_ORIGIN=^https://(?:\w+\.)?e-credit\.one$
+DATABASE_URL=mysql://v4-api-platform:uckqtBd5JCFnIQpb0WD4IKIM@db/api
+MERCURE_ALLOW_ANONYMOUS=0
+MERCURE_CORS_ALLOWED_ORIGINS=*
+##### https://stage-v4-frontend.e-credit.one,https://stage-v4-admin.e-credit.one,https://e-credit.one
+MERCURE_HOST=v4-mercure.e-credit.one
+MERCURE_JWT_KEY=4esg2FuEIohpQnUzvl3icPAh
+MERCURE_JWT_SECRET=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0ZXNnMkZ1RUlvaHBRblV6dmwzaWNQQWgiLCJuYW1lIjoiRmVkb3JvdiBWaXRseSIsImFkbWluIjp0cnVlLCJqdGkiOiJhM2U4NTk5MC1jNTQ0LTQ1NDQtYTgxOC0xMDNhOGFlNzM5ZDMiLCJpYXQiOjE1ODg3NTg2MTcsImV4cCI6MTU4ODc2MjI0MH0.7pSvYdINC-RVpY3mfMTnI9eGnR7CcXtsbFKleXB63CU
+MERCURE_SUBSCRIBE_URL=https://v4-mercure.e-credit.one/hub
+NGINX_IMAGE=labregistry.e-credit.one/e-credit/v4-e-credit-api-platform/api:master_api.latest
+PHP_IMAGE=labregistry.e-credit.one/e-credit/v4-e-credit-api-platform/api:master_php.latest
+REACT_APP_API_ENTRYPOINT=https://v4-api.e-credit.one
+TRUSTED_HOSTS=^(?:localhost|api|api\.e\-credit\.one|v4\-api\.e\-credit\.one)$
+VARNISH_IMAGE=labregistry.e-credit.one/e-credit/v4-e-credit-api-platform/api:master_cache.latest
+NGINX_PROXY=labregistry.e-credit.one/e-credit/v4-e-credit-api-platform/nginx-proxy:latest
+
+MYSQL_DATABASE=api
+MYSQL_PASSWORD=uckqtBd5JCFnIQpb0WD4IKIM
+MYSQL_USER=v4-api-platform
+MYSQL_ROOT_PASSWORD=uckqtBd5JCFnIQpb0WD4IKIM
+## Database e-Credit
+MYSQL_CHERY_DATABASE=chery_sss_prod
+MYSQL_CHERY_USER=appadmin
+MYSQL_CHERY_PASSWORD=9ENTKhOowi40bugLTQ
