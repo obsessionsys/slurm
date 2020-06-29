@@ -6,12 +6,12 @@ metadata:
 data:
   default.conf: |
     server {
-      listen       80 default_server;
-      server_name  _;
+        listen       80 default_server;
+        server_name  _;
 
-      deafult_type text/plain;
-      
-      location / {
-        return 200 '$hostname\n';
-      }
+        default_type text/plain;
+
+        location / {
+            return 200 '$hostname\n';
+        }
     }
